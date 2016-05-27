@@ -1,14 +1,46 @@
 {
   "paragraphs": [
     {
-      "config": {},
+      "text": "%sh\nls",
+      "dateUpdated": "May 27, 2016 3:37:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/sh"
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "jobName": "paragraph_1464343328746_1351313563",
       "id": "20160527-153208_794075965",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Interpreter sh not found"
+      },
       "dateCreated": "May 27, 2016 3:32:08 PM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464343638274_1311544864",
+      "id": "20160527-153718_191625956",
+      "dateCreated": "May 27, 2016 3:37:18 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
