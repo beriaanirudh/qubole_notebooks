@@ -65,14 +65,46 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "config": {},
+      "text": "%sh\n",
+      "dateUpdated": "May 27, 2016 5:18:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/sh"
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "jobName": "paragraph_1464343687220_-1636523802",
       "id": "20160527-153807_104291111",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Interpreter sh not found"
+      },
       "dateCreated": "May 27, 2016 3:38:07 PM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464349711213_-1972334983",
+      "id": "20160527-171831_568058799",
+      "dateCreated": "May 27, 2016 5:18:31 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
