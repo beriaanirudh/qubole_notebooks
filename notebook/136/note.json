@@ -24,7 +24,8 @@
       "id": "20160529-121016_1706292388",
       "dateCreated": "May 29, 2016 12:10:16 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     },
     {
       "text": "%more so ",
@@ -50,7 +51,8 @@
       "id": "20160529-131727_1754896420",
       "dateCreated": "May 29, 2016 1:17:27 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     },
     {
       "text": "%hello\n",
@@ -76,7 +78,8 @@
       "id": "20160529-131810_631742277",
       "dateCreated": "May 29, 2016 1:18:10 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     },
     {
       "config": {},
@@ -87,7 +90,8 @@
       "jobName": "paragraph_1464508278640_-1133553434",
       "id": "20160529-132118_417187564",
       "dateCreated": "May 29, 2016 1:21:18 PM",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     }
   ],
   "name": "finalNoteHopefully",
