@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "text": "%beria likha hona chahiye",
-      "dateUpdated": "May 29, 2016 12:22:46 PM",
+      "dateUpdated": "May 29, 2016 1:14:00 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -23,13 +23,12 @@
       "jobName": "paragraph_1464504016047_-349733960",
       "id": "20160529-121016_1706292388",
       "dateCreated": "May 29, 2016 12:10:16 PM",
-      "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sh\nhere is change",
-      "dateUpdated": "May 29, 2016 12:55:41 PM",
+      "dateUpdated": "May 29, 2016 1:14:00 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -50,13 +49,12 @@
       "jobName": "paragraph_1464504766566_1849181504",
       "id": "20160529-122246_1244025520",
       "dateCreated": "May 29, 2016 12:22:46 PM",
-      "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%more changes from beria",
-      "dateUpdated": "May 29, 2016 1:00:11 PM",
+      "dateUpdated": "May 29, 2016 1:13:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -77,13 +75,12 @@
       "jobName": "paragraph_1464506741051_367164846",
       "id": "20160529-125541_794674707",
       "dateCreated": "May 29, 2016 12:55:41 PM",
-      "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%another test change to revertt\n",
-      "dateUpdated": "May 29, 2016 1:00:45 PM",
+      "text": "newest",
+      "dateUpdated": "May 29, 2016 1:13:54 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -104,7 +101,32 @@
       "jobName": "paragraph_1464507011859_-746700188",
       "id": "20160529-130011_1719087054",
       "dateCreated": "May 29, 2016 1:00:11 PM",
-      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n\n",
+      "dateUpdated": "May 29, 2016 1:14:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464507834736_78929912",
+      "id": "20160529-131354_1612869143",
+      "dateCreated": "May 29, 2016 1:13:54 PM",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -114,10 +136,9 @@
         "params": {},
         "forms": {}
       },
-      "jobName": "paragraph_1464507045506_-1883820367",
-      "id": "20160529-130045_2088506916",
-      "dateCreated": "May 29, 2016 1:00:45 PM",
-      "status": "READY",
+      "jobName": "paragraph_1464507845189_1718745049",
+      "id": "20160529-131405_793636724",
+      "dateCreated": "May 29, 2016 1:14:05 PM",
       "progressUpdateIntervalMs": 500
     }
   ],
