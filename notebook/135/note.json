@@ -23,40 +23,13 @@
       "jobName": "paragraph_1464343328746_1351313563",
       "id": "20160527-153208_794075965",
       "dateCreated": "May 27, 2016 3:32:08 PM",
-      "status": "ERROR",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     },
     {
-      "text": "%python\nls\n",
-      "dateUpdated": "May 28, 2016 5:21:29 PM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "table",
-          "height": 300.0,
-          "optionOpen": false,
-          "keys": [],
-          "values": [],
-          "groups": [],
-          "scatter": {}
-        },
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "jobName": "paragraph_1464436280916_971045614",
-      "id": "20160528-172120_2141845918",
-      "dateCreated": "May 28, 2016 5:21:20 PM",
-      "status": "ERROR",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%ls",
-      "dateUpdated": "May 28, 2016 5:29:21 PM",
+      "text": "%beria1",
+      "dateUpdated": "May 29, 2016 1:23:20 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -77,8 +50,21 @@
       "jobName": "paragraph_1464436289169_-2105791340",
       "id": "20160528-172129_1786992422",
       "dateCreated": "May 28, 2016 5:21:29 PM",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464508392520_588137121",
+      "id": "20160529-132312_1158236748",
+      "dateCreated": "May 29, 2016 1:23:12 PM",
+      "progressUpdateIntervalMs": 500,
+      "status": "Ready"
     }
   ],
   "name": "mynewnote",
