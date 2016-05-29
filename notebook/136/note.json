@@ -53,7 +53,21 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "config": {},
+      "text": "%hello\n",
+      "dateUpdated": "May 29, 2016 1:21:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -61,6 +75,18 @@
       "jobName": "paragraph_1464508090543_1908378639",
       "id": "20160529-131810_631742277",
       "dateCreated": "May 29, 2016 1:18:10 PM",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464508278640_-1133553434",
+      "id": "20160529-132118_417187564",
+      "dateCreated": "May 29, 2016 1:21:18 PM",
       "progressUpdateIntervalMs": 500
     }
   ],
