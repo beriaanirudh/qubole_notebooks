@@ -24,8 +24,7 @@
       "id": "20160529-121016_1706292388",
       "dateCreated": "May 29, 2016 12:10:16 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "progressUpdateIntervalMs": 500
     },
     {
       "text": "$%more and more",
@@ -51,8 +50,7 @@
       "id": "20160529-132118_417187564",
       "dateCreated": "May 29, 2016 1:21:18 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "progressUpdateIntervalMs": 500
     },
     {
       "text": "%specific to 136",
@@ -78,8 +76,7 @@
       "id": "20160529-132747_702693605",
       "dateCreated": "May 29, 2016 1:27:47 PM",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "progressUpdateIntervalMs": 500
     },
     {
       "text": "%le 1 aur\n",
@@ -104,9 +101,9 @@
       "jobName": "paragraph_1464508999145_-1696242981",
       "id": "20160529-133319_2140941073",
       "dateCreated": "May 29, 2016 1:33:19 PM",
+      "status": "ERROR",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "progressUpdateIntervalMs": 500
     },
     {
       "text": "%lollol",
@@ -131,12 +128,26 @@
       "jobName": "paragraph_1464510979353_-1913438407",
       "id": "20160529-140619_523853463",
       "dateCreated": "May 29, 2016 2:06:19 PM",
+      "status": "ERROR",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "progressUpdateIntervalMs": 500
     },
     {
-      "config": {},
+      "text": "%sh\nls",
+      "dateUpdated": "May 29, 2016 2:50:48 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/sh"
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -144,8 +155,8 @@
       "jobName": "paragraph_1464511218371_1037401766",
       "id": "20160529-141018_537537164",
       "dateCreated": "May 29, 2016 2:10:18 PM",
-      "progressUpdateIntervalMs": 500,
-      "status": "Ready"
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "finalNoteHopefully",
