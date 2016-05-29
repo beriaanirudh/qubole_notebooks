@@ -82,7 +82,21 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "config": {},
+      "text": "%another test change to revertt\n",
+      "dateUpdated": "May 29, 2016 1:00:45 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -90,6 +104,19 @@
       "jobName": "paragraph_1464507011859_-746700188",
       "id": "20160529-130011_1719087054",
       "dateCreated": "May 29, 2016 1:00:11 PM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1464507045506_-1883820367",
+      "id": "20160529-130045_2088506916",
+      "dateCreated": "May 29, 2016 1:00:45 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
