@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%spark \nimport org.apache.hadoop.fs.Path\nimport org.apache.hadoop.fs.FileSystem\nimport java.net.URI\n\n    val numFiles \u003d 1000000\n    val maxFilesInAPartition \u003d 10\n    val basePath \u003d s\"s3://dev.canopydata.com/ipp-test-tables-${numFiles}-files\"\n    (0 to math.log10(numFiles).toInt).foreach(factor \u003d\u003e {\n      val numParititons \u003d (numFiles / math.pow(10, factor)).toInt\n      val numFilesInPartiton \u003d numFiles / numParititons\n      println(s\"numPartitions \u003d ${numParititons}; numFilesInpartiton \u003d ${numFilesInPartiton}\")\n\n      val files \u003d (1 to numParititons).map(partitionNumber \u003d\u003e {\n          (1 to (numFilesInPartiton)).map( fileNum \u003d\u003e {\n            s\"${basePath}/${numParititons}_partitions/${partitionNumber}/${fileNum}\"\n          })\n      }).flatten\n      \n      val shuffledFiles \u003d scala.util.Random.shuffle(files)\n      \n      sc.parallelize(shuffledFiles, 1000).map( path \u003d\u003e {\n          val fs \u003d FileSystem.get(new URI(\"s3://dev.canopydata.com/\"), new org.apache.hadoop.conf.Configuration())\n          fs.create(new Path(path), true).close()\n          1\n      }).count()\n    })\n    ",
+      "text": "%spark \nimport org.apache.hadoop.fs.Path\nimport org.apache.hadoop.fs.FileSystem\nimport java.net.URI\n\n    val numFiles \u003d 100\n    val maxFilesInAPartition \u003d 10\n    val basePath \u003d s\"s3://dev.canopydata.com/ipp-test-tables-${numFiles}-files\"\n    (0 to math.log10(numFiles).toInt).foreach(factor \u003d\u003e {\n      val numParititons \u003d (numFiles / math.pow(10, factor)).toInt\n      val numFilesInPartiton \u003d numFiles / numParititons\n      println(s\"numPartitions \u003d ${numParititons}; numFilesInpartiton \u003d ${numFilesInPartiton}\")\n    \n\n      val files \u003d (1 to numParititons).map(partitionNumber \u003d\u003e {\n          (1 to (numFilesInPartiton)).map( fileNum \u003d\u003e {\n            s\"${basePath}/${numParititons}_partitions/partition_num\u003d${partitionNumber}/${fileNum}\"\n          })\n      }).flatten\n      \n      val shuffledFiles \u003d scala.util.Random.shuffle(files)\n      \n      sc.parallelize(shuffledFiles, 1000).map( path \u003d\u003e {\n          val fs \u003d FileSystem.get(new URI(\"s3://dev.canopydata.com/\"), new org.apache.hadoop.conf.Configuration())\n          fs.create(new Path(path), true).close()\n          1\n      }).count()\n    })\n    ",
       "user": "beria@qubole.com",
-      "dateUpdated": "Apr 10, 2018 6:53:57 AM",
+      "dateUpdated": "Apr 10, 2018 7:20:04 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,10 +22,94 @@
         "params": {},
         "forms": {}
       },
+      "runtimeInfos": {},
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 3,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/jobs/job?spark\u003dtrue\u0026id\u003d3",
+            "numTasks": 1000,
+            "numCompletedTasks": 1000,
+            "stages": [
+              {
+                "id": 3,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/stages/stage/?id\u003d3\u0026attempt\u003d0",
+                "numCompleteTasks": 1000,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1000
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 4,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/jobs/job?spark\u003dtrue\u0026id\u003d4",
+            "numTasks": 1000,
+            "numCompletedTasks": 1000,
+            "stages": [
+              {
+                "id": 4,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/stages/stage/?id\u003d4\u0026attempt\u003d0",
+                "numCompleteTasks": 1000,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1000
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 5,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/jobs/job?spark\u003dtrue\u0026id\u003d5",
+            "numTasks": 1000,
+            "numCompletedTasks": 1000,
+            "stages": [
+              {
+                "id": 5,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.138.92.225%3A8088%2Fproxy%2Fapplication_1523341706106_0001/stages/stage/?id\u003d5\u0026attempt\u003d0",
+                "numCompleteTasks": 1000,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1000
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 3000,
+        "numTasks": 3000,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1523343215873_14427389",
       "id": "20180410-065335_32194415_q_KPZNB6H6RK1523343214",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nimport org.apache.hadoop.fs.Path\n\nimport org.apache.hadoop.fs.FileSystem\n\nimport java.net.URI\n\nnumFiles: Int \u003d 100\n\nmaxFilesInAPartition: Int \u003d 10\n\nbasePath: String \u003d s3://dev.canopydata.com/ipp-test-tables-100-files\nnumPartitions \u003d 100; numFilesInpartiton \u003d 1\nnumPartitions \u003d 10; numFilesInpartiton \u003d 10\nnumPartitions \u003d 1; numFilesInpartiton \u003d 100\n"
+      },
       "dateCreated": "Apr 10, 2018 6:53:35 AM",
+      "dateSubmitted": "Apr 10, 2018 7:20:04 AM",
+      "dateStarted": "Apr 10, 2018 7:20:04 AM",
+      "dateFinished": "Apr 10, 2018 7:20:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523344517045_1012907672",
+      "id": "20180410-071517_455139746_q_KPZNB6H6RK1523343214",
+      "dateCreated": "Apr 10, 2018 7:15:17 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 1000
     }
