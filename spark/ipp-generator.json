@@ -1,0 +1,47 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark \nimport org.apache.hadoop.fs.Path\nimport org.apache.hadoop.fs.FileSystem\nimport java.net.URI\n\n    val numFiles \u003d 1000000\n    val maxFilesInAPartition \u003d 10\n    val basePath \u003d s\"s3://dev.canopydata.com/ipp-test-tables-${numFiles}-files\"\n    (0 to math.log10(numFiles).toInt).foreach(factor \u003d\u003e {\n      val numParititons \u003d (numFiles / math.pow(10, factor)).toInt\n      val numFilesInPartiton \u003d numFiles / numParititons\n      println(s\"numPartitions \u003d ${numParititons}; numFilesInpartiton \u003d ${numFilesInPartiton}\")\n\n      val files \u003d (1 to numParititons).map(partitionNumber \u003d\u003e {\n          (1 to (numFilesInPartiton)).map( fileNum \u003d\u003e {\n            s\"${basePath}/${numParititons}_partitions/${partitionNumber}/${fileNum}\"\n          })\n      }).flatten\n      \n      val shuffledFiles \u003d scala.util.Random.shuffle(files)\n      \n      sc.parallelize(shuffledFiles, 1000).map( path \u003d\u003e {\n          val fs \u003d FileSystem.get(new URI(\"s3://dev.canopydata.com/\"), new org.apache.hadoop.conf.Configuration())\n          fs.create(new Path(path), true).close()\n          1\n      }).count()\n    })\n    ",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 10, 2018 6:53:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523343215873_14427389",
+      "id": "20180410-065335_32194415_q_KPZNB6H6RK1523343214",
+      "dateCreated": "Apr 10, 2018 6:53:35 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "ipp-table-generator",
+  "id": "KPZNB6H6RK1523343214",
+  "angularObjects": {
+    "2DD1T8BX3990911523341593484:shared_process": [],
+    "2DA8SR9RV990911523341593468:shared_process": [],
+    "2DD4RB7DA990911523343216219:shared_process": [],
+    "2DBC9MU2N990911523341593479:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "spark"
+  },
+  "info": {},
+  "source": "FCN"
+}
