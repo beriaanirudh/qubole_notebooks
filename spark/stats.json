@@ -1,0 +1,377 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\nsc.version",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 6:25:56 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523427838092_1693358347",
+      "id": "20180411-062358_1192751190_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nres0: String \u003d 2.2.0\n"
+      },
+      "dateCreated": "Apr 11, 2018 6:23:58 AM",
+      "dateStarted": "Apr 11, 2018 6:25:56 AM",
+      "dateFinished": "Apr 11, 2018 6:26:24 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect a.id as account_id, a.name as account_name from accounts a, cluster_configs cc, cluster_insts ci, cluster_nodes cn where cn",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 7:57:26 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "name",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "name",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.166.195.134%3A8088%2Fproxy%2Fapplication_1523426397239_0034/jobs/job?spark\u003dtrue\u0026id\u003d3"
+          ],
+          "interpreterSettingId": "2DAKM4BNQ541401523427838293"
+        }
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523427956980_955379309",
+      "id": "20180411-062556_1513852148_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "id\tname\n1\tdev-perftest\n"
+      },
+      "dateCreated": "Apr 11, 2018 6:25:56 AM",
+      "dateStarted": "Apr 11, 2018 7:55:40 AM",
+      "dateFinished": "Apr 11, 2018 7:55:46 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\ncache table cluster_insts",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 8:02:48 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "col_name",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "data_type",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "col_name",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "data_type",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523428103689_-233111688",
+      "id": "20180411-062823_1306838877_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Apr 11, 2018 6:28:23 AM",
+      "dateStarted": "Apr 11, 2018 8:02:48 AM",
+      "dateFinished": "Apr 11, 2018 8:04:20 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val df \u003d spark.read.format(\"csv\").option(\"header\", \"true\").load(\"/csv_data.csv\")",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 8:10:59 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.166.195.134%3A8088%2Fproxy%2Fapplication_1523426397239_0046/jobs/job?spark\u003dtrue\u0026id\u003d1"
+          ],
+          "interpreterSettingId": "2DAKM4BNQ541401523427838293"
+        }
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523432851345_-76531518",
+      "id": "20180411-074731_59945681_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\ndf: org.apache.spark.sql.DataFrame \u003d [type: string, nopresto: string ... 6 more fields]\n"
+      },
+      "dateCreated": "Apr 11, 2018 7:47:31 AM",
+      "dateStarted": "Apr 11, 2018 8:10:59 AM",
+      "dateFinished": "Apr 11, 2018 8:11:02 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "df.collect()",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 7:52:39 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.166.195.134%3A8088%2Fproxy%2Fapplication_1523426397239_0034/jobs/job?spark\u003dtrue\u0026id\u003d1"
+          ],
+          "interpreterSettingId": "2DAKM4BNQ541401523427838293"
+        }
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523433002620_-1808070135",
+      "id": "20180411-075002_1978837199_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "res1: Array[org.apache.spark.sql.Row] \u003d Array([m3.large,True,True,True,7.5GiB,2,0.133,True], [m5.xlarge,True,True,16.0GiB,4,0.192,True,null], [r4.16xlarge,True,True,488GiB,64,4.256,True,null], [m3.2xlarge,30GiB,8,0.532,True,null,null,null], [m2.xlarge,17.1GiB,2,0.245,True,null,null,null], [i3.xlarge,30.5GiB,4,0.312,True,True,null,null], [r4.4xlarge,True,True,122GiB,16,1.064,True,null], [c4.8xlarge,True,True,60.0 GiB,36,1.591,True,null], [r4.8xlarge,True,True,244GiB,32,2.128,True,null], [h1.4xlarge,64.0GiB,16,1.1,True,True,null,null], [h1.2xlarge,32.0GiB,8,0.55,True,True,null,null], [c4.xlarge,True,True,7.5 GiB,4,0.199,True,null], [c5.4xlarge,True,True,32GiB,16,0.68,True,null], [c5.large,True,True,True,4GiB,2,0.085,True], [i2.8xlarge,244GiB,32,6.820,null,null,null,null], [d2.4xlarge,122G..."
+      },
+      "dateCreated": "Apr 11, 2018 7:50:02 AM",
+      "dateStarted": "Apr 11, 2018 7:52:39 AM",
+      "dateFinished": "Apr 11, 2018 7:52:40 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "df.registerTempTable(\"instanceTable\")",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 7:53:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523433156586_-1675121038",
+      "id": "20180411-075236_591752644_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nwarning: there was one deprecation warning; re-run with -deprecation for details\n"
+      },
+      "dateCreated": "Apr 11, 2018 7:52:36 AM",
+      "dateStarted": "Apr 11, 2018 7:53:57 AM",
+      "dateFinished": "Apr 11, 2018 7:53:57 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql select * from instanceTable",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Apr 11, 2018 7:54:09 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.166.195.134%3A8088%2Fproxy%2Fapplication_1523426397239_0034/jobs/job?spark\u003dtrue\u0026id\u003d2"
+          ],
+          "interpreterSettingId": "2DAKM4BNQ541401523427838293"
+        }
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523433191930_775390679",
+      "id": "20180411-075311_1507415920_q_E19FZ1X3371523427836",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "type\tnopresto\tnoslave\tebs\tmem\tcores\tprice\tnomaster\nm3.large\tTrue\tTrue\tTrue\t7.5GiB\t2\t0.133\tTrue\nm5.xlarge\tTrue\tTrue\t16.0GiB\t4\t0.192\tTrue\tnull\nr4.16xlarge\tTrue\tTrue\t488GiB\t64\t4.256\tTrue\tnull\nm3.2xlarge\t30GiB\t8\t0.532\tTrue\tnull\tnull\tnull\nm2.xlarge\t17.1GiB\t2\t0.245\tTrue\tnull\tnull\tnull\ni3.xlarge\t30.5GiB\t4\t0.312\tTrue\tTrue\tnull\tnull\nr4.4xlarge\tTrue\tTrue\t122GiB\t16\t1.064\tTrue\tnull\nc4.8xlarge\tTrue\tTrue\t60.0 GiB\t36\t1.591\tTrue\tnull\nr4.8xlarge\tTrue\tTrue\t244GiB\t32\t2.128\tTrue\tnull\nh1.4xlarge\t64.0GiB\t16\t1.1\tTrue\tTrue\tnull\tnull\nh1.2xlarge\t32.0GiB\t8\t0.55\tTrue\tTrue\tnull\tnull\nc4.xlarge\tTrue\tTrue\t7.5 GiB\t4\t0.199\tTrue\tnull\nc5.4xlarge\tTrue\tTrue\t32GiB\t16\t0.68\tTrue\tnull\nc5.large\tTrue\tTrue\tTrue\t4GiB\t2\t0.085\tTrue\ni2.8xlarge\t244GiB\t32\t6.820\tnull\tnull\tnull\tnull\nd2.4xlarge\t122GiB\t16\t2.76\tnull\tnull\tnull\tnull\nd2.8xlarge\t244GiB\t36\t5.52\tnull\tnull\tnull\tnull\nc4.4xlarge\tTrue\tTrue\t30.0 GiB\t16\t0.796\tTrue\tnull\ng3.4xlarge\tTrue\tTrue\tTrue\t122GiB\t16\t1.14\tTrue\nx1.32xlarge\t1952GiB\t128\t13.338\tTrue\tTrue\tnull\tnull\nr3.4xlarge\t122GiB\t16\t1.330\tTrue\tnull\tnull\tnull\nc1.xlarge\t7GiB\t8\t0.520\tTrue\tnull\tnull\tnull\nc5.2xlarge\tTrue\tTrue\t16GiB\t8\t0.34\tTrue\tnull\ng2.2xlarge\t15GiB\t8\t0.65\tTrue\tTrue\tnull\tnull\nc4.2xlarge\tTrue\tTrue\t15.0 GiB\t8\t0.398\tTrue\tnull\nc5.xlarge\tTrue\tTrue\tTrue\t8GiB\t4\t0.17\tTrue\nr4.xlarge\tTrue\tTrue\t30.5GiB\t4\t0.266\tTrue\tnull\ng3.8xlarge\tTrue\tTrue\tTrue\t244GiB\t32\t2.28\tTrue\ni2.xlarge\t30.5GiB\t4\t0.853\tnull\tnull\tnull\tnull\nm3.medium\tTrue\tTrue\tTrue\t3.75GiB\t1\t0.067\tTrue\nr3.xlarge\t30.5GiB\t4\t0.333\tTrue\tnull\tnull\tnull\nm4.2xlarge\tTrue\tTrue\t32.0 GiB\t8\t0.431\tTrue\tnull\nc3.large\t3.75GiB\t2\t0.105\tTrue\tTrue\tnull\tnull\ni2.4xlarge\t122GiB\t16\t3.410\tnull\tnull\tnull\tnull\np3.16xlarge\tTrue\tTrue\tTrue\t488GiB\t64\t24.48\tTrue\ni3.16xlarge\t488GiB\t64\t4.992\tTrue\tTrue\tnull\tnull\nr3.2xlarge\t61GiB\t8\t0.665\tTrue\tnull\tnull\tnull\ng3.16xlarge\tTrue\tTrue\tTrue\t488GiB\t64\t4.56\tTrue\ni3.4xlarge\t122GiB\t16\t1.248\tTrue\tTrue\tnull\tnull\nh1.8xlarge\t128.0GiB\t32\t2.2\tTrue\tTrue\tnull\tnull\nh1.16xlarge\t256.0GiB\t64\t4.4\tTrue\tTrue\tnull\tnull\nm3.xlarge\t15GiB\t4\t0.266\tTrue\tTrue\tnull\tnull\nd2.2xlarge\t61GiB\t8\t1.38\tnull\tnull\tnull\tnull\ng2.8xlarge\t60GiB\t32\t2.6\tTrue\tTrue\tnull\tnull\ncg1.4xlarge\tTrue\tTrue\tTrue\t22.5GiB\t16\t2.100\tTrue\nc5.9xlarge\tTrue\tTrue\t72GiB\t36\t1.53\tTrue\tnull\nc5.18xlarge\tTrue\tTrue\t144GiB\t72\t3.06\tTrue\tnull\np2.16xlarge\tTrue\tTrue\tTrue\t732GiB\t64\t14.4\tTrue\nm1.small\t1.7GiB\t1\t0.044\tTrue\tTrue\tnull\tnull\nc1.medium\t1.7GiB\t2\t0.130\tTrue\tTrue\tnull\tnull\nm5.24xlarge\tTrue\tTrue\t384.0GiB\t96\t4.608\tTrue\tnull\ni3.2xlarge\t61GiB\t8\t0.624\tTrue\tTrue\tnull\tnull\nx1.16xlarge\t976GiB\t64\t6.669\tTrue\tTrue\tnull\tnull\nt1.micro\tTrue\tTrue\t.615GiB\t1\t0.020\tTrue\tnull\nc3.2xlarge\t15GiB\t8\t0.42\tTrue\tnull\tnull\tnull\nm5.large\tTrue\tTrue\t8.0GiB\t2\t0.096\tTrue\tnull\nc3.xlarge\t7.5GiB\t4\t0.210\tTrue\tTrue\tnull\tnull\np2.8xlarge\tTrue\tTrue\tTrue\t488GiB\t32\t7.2\tTrue\nm1.large\t7.5GiB\t2\t0.175\tTrue\tnull\tnull\tnull\np3.8xlarge\tTrue\tTrue\tTrue\t244GiB\t32\t12.24\tTrue\nc3.8xlarge\t60GiB\t32\t1.68\tTrue\tnull\tnull\tnull\nc3.4xlarge\t30GiB\t16\t0.84\tTrue\tnull\tnull\tnull\nm4.large\tTrue\tTrue\t8.0 GiB\t2\t0.108\tTrue\tnull\nm5.2xlarge\tTrue\tTrue\t32.0GiB\t8\t0.384\tTrue\tnull\nhi1.4xlarge\t60.5GiB\t16\t3.100\tTrue\tnull\tnull\tnull\nr4.2xlarge\tTrue\tTrue\t61GiB\t8\t0.532\tTrue\tnull\nm2.2xlarge\t34.2GiB\t4\t0.490\tnull\tnull\tnull\tnull\nm5.4xlarge\tTrue\tTrue\t64.0GiB\t16\t0.768\tTrue\tnull\nm4.xlarge\tTrue\tTrue\t16.0 GiB\t4\t0.215\tTrue\tnull\nd2.xlarge\t30.5GiB\t4\t0.69\tnull\tnull\tnull\tnull\nm1.xlarge\t15GiB\t4\t0.350\tnull\tnull\tnull\tnull\nm4.16xlarge\tTrue\tTrue\t256.0 GiB\t64\t3.447\tTrue\tnull\np2.xlarge\tTrue\tTrue\tTrue\t61GiB\t4\t0.9\tTrue\nm4.10xlarge\tTrue\tTrue\t160.0 GiB\t40\t2.155\tTrue\tnull\nm1.medium\t3.75GiB\t1\t0.087\tTrue\tTrue\tnull\tnull\nr3.large\tTrue\tTrue\tTrue\t15GiB\t2\t0.166\tTrue\ncc2.8xlarge\t60.5GiB\t32\t2.000\tnull\tnull\tnull\tnull\nm2.4xlarge\t68.4GiB\t8\t0.980\tnull\tnull\tnull\tnull\nc4.large\tTrue\tTrue\t3.75 GiB\t2\t0.1\tTrue\tnull\ni2.2xlarge\t61GiB\t8\t1.705\tnull\tnull\tnull\tnull\nm5.12xlarge\tTrue\tTrue\t192.0GiB\t48\t2.304\tTrue\tnull\ni3.8xlarge\t244GiB\t32\t2.496\tTrue\tTrue\tnull\tnull\nr3.8xlarge\t244GiB\t32\t2.660\tTrue\tnull\tnull\tnull\nm4.4xlarge\tTrue\tTrue\t64.0 GiB\t16\t0.862\tTrue\tnull\np3.2xlarge\tTrue\tTrue\tTrue\t61GiB\t8\t3.06\tTrue\n"
+      },
+      "dateCreated": "Apr 11, 2018 7:53:11 AM",
+      "dateStarted": "Apr 11, 2018 7:54:09 AM",
+      "dateFinished": "Apr 11, 2018 7:54:11 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523433249377_-1271580739",
+      "id": "20180411-075409_892480876_q_E19FZ1X3371523427836",
+      "dateCreated": "Apr 11, 2018 7:54:09 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "beria-generate-metrics",
+  "id": "E19FZ1X3371523427836",
+  "angularObjects": {
+    "2D9W4HGZB541401523426070471:shared_process": [],
+    "2DCJUK8JF541401523426070467:shared_process": [],
+    "2DAKM4BNQ541401523427838293:shared_process": [],
+    "2DCFKBPX2541401523426070453:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
