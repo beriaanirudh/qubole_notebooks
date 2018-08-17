@@ -1,0 +1,266 @@
+{
+  "paragraphs": [
+    {
+      "title": "Longest running spark commands",
+      "text": "%sql\nselect  \nmin(ci.created_at),\nqh.id as query_hist_id,\nfirst(a.id) as account_id,  \nfirst(ct.cluster_id) , \nfirst(qh.created_at),\nci.id as cluster_inst_id,\nmin(ci.created_at) as cluster_start_time,\nmin(ci.down_at) as cluster_down_time,\n(qh.end_time - qh.start_time) as duration\n\nfrom\n\n\nrstore.query_hists qh ,\nrstore.spark_commands sc,\nrstore.cluster_tags ct,\nrstore.accounts a,\nrstore.cluster_insts ci\n\n\nwhere\n\nqh.dt \u003e \u00272018-08-01\u0027 and\nsc.dt \u003e \u00272018-08-01\u0027 and \nsc.id \u003d qh.command_id and \nct.tag \u003d qh.tag and\nct.account_id \u003d qh.account_id and\na.id \u003d qh.account_id and\nci.cluster_id \u003d ct.cluster_id and \n--ci.created_at \u003c qh.created_at and\n-- trick since cluster can be started because of a command submitted, so qh.created_at could be \u003c ci.created_at . So we can find the min(ci.down_at \u003e qh.created_at) \nci.down_at \u003e qh.created_at and\nci.created_at \u003e \u00272018-08-01\u0027 and \nqh.status \u003d \u0027done\u0027 and\nqh.id \u003d 171836475 and\nqh.command_type \u003d \u0027SparkCommand\u0027\n\n\ngroup by qh.id\n\norder by duration\ndesc\n--limit 10",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Aug 17, 2018 10:09:10 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "min(created_at)",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "query_hist_id",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "min(created_at)",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "query_hist_id",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1534490949294_-1861166026",
+      "id": "20180817-072909_1832509276_q_DT1NNXM8E81534490947",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "expression \u0027ci.`id`\u0027 is neither present in the group by, nor is it an aggregate function. Add to group by or wrap in first() (or first_value) if you don\u0027t care which value you get.;;\nSort [duration#8458 DESC NULLS LAST], true\n+- Aggregate [id#8459], [min(created_at#8551) AS min(created_at)#8561, id#8459 AS query_hist_id#8450, first(id#8518, false) AS account_id#8452, first(cluster_id#8511, false) AS first(cluster_id, false)#8562, first(created_at#8466, false) AS first(created_at, false)#8563, id#8542 AS cluster_inst_id#8455, min(created_at#8551) AS cluster_start_time#8456, min(down_at#8547) AS cluster_down_time#8457, (end_time#8462 - start_time#8487) AS duration#8458]\n   +- Filter (((((dt#8494 \u003e 2018-08-01) \u0026\u0026 (dt#8508 \u003e 2018-08-01)) \u0026\u0026 (id#8495 \u003d command_id#8472)) \u0026\u0026 (((tag#8512 \u003d tag#8490) \u0026\u0026 (account_id#8510 \u003d account_id#8493)) \u0026\u0026 (id#8518 \u003d account_id#8493))) \u0026\u0026 ((((cluster_id#8543 \u003d cluster_id#8511) \u0026\u0026 (down_at#8547 \u003e created_at#8466)) \u0026\u0026 (created_at#8551 \u003e 2018-08-01)) \u0026\u0026 (((status#8468 \u003d done) \u0026\u0026 (id#8459 \u003d 171836475)) \u0026\u0026 (command_type#8473 \u003d SparkCommand))))\n      +- Join Inner\n         :- Join Inner\n         :  :- Join Inner\n         :  :  :- Join Inner\n         :  :  :  :- SubqueryAlias qh\n         :  :  :  :  +- SubqueryAlias query_hists\n         :  :  :  :     +- CatalogRelation `rstore`.`query_hists`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, [id#8459, qbol_user_id#8460, submit_time#8461, end_time#8462, progress#8463, cube_id#8464, updated_at#8465, created_at#8466, path#8467, status#8468, host_name#8469, user_loc#8470, qbol_session_id#8471, command_id#8472, command_type#8473, qlog#8474, periodic_job_id#8475, wf_id#8476, command_source#8477, resolved_macros#8478, status_code#8479, pid#8480, command_template_id#8481, command_template_mutable_id#8482, ... 11 more fields], [dt#8494]\n         :  :  :  +- SubqueryAlias sc\n         :  :  :     +- SubqueryAlias spark_commands\n         :  :  :        +- CatalogRelation `rstore`.`spark_commands`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, [id#8495, cmdline#8496, account_id#8497, updated_at#8498, created_at#8499, program#8500, arguments#8501, language#8502, user_program_arguments#8503, sql#8504, app_id#8505, paragraph_id#8506, md_cmd#8507], [dt#8508]\n         :  :  +- SubqueryAlias ct\n         :  :     +- SubqueryAlias cluster_tags\n         :  :        +- CatalogRelation `rstore`.`cluster_tags`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8509, account_id#8510, cluster_id#8511, tag#8512, enabled_at#8513, disabled_at#8514, disabled#8515, created_at#8516, updated_at#8517]\n         :  +- SubqueryAlias a\n         :     +- SubqueryAlias accounts\n         :        +- CatalogRelation `rstore`.`accounts`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8518, name#8519, info#8520, created_at#8521, updated_at#8522, storage_type#8523, state#8524, hadoop_max_nodes#8525, hadoop_slave_type#8526, hadoop_initial_nodes#8527, compute_type#8528, hadoop_slave_request_type#8529, timeout_for_spot_request#8530, maximum_bid_price_percentage#8531, maximum_spot_instance_percentage#8532, aws_availability_zone#8533, aws_region#8534, encrypted_ephemerals#8535, hadoop_master_type#8536, custom_hadoop_config#8537, disabled#8538, fair_scheduler_config#8539, account_plan_id#8540, deleted_at#8541]\n         +- SubqueryAlias ci\n            +- SubqueryAlias cluster_insts\n               +- CatalogRelation `rstore`.`cluster_insts`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8542, cluster_id#8543, cluster_config_id#8544, cluster_state#8545, start_at#8546, down_at#8547, terminate_reason#8548, last_health_check_action_at#8549, last_health_check_action#8550, created_at#8551, updated_at#8552, start_cluster_manage_command_id#8553, public_ssh_key#8554, private_ssh_key#8555, starting_process_host#8556, starting_process_updated_at#8557]\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+      },
+      "dateCreated": "Aug 17, 2018 7:29:09 AM",
+      "dateSubmitted": "Aug 17, 2018 10:07:23 AM",
+      "dateStarted": "Aug 17, 2018 10:07:23 AM",
+      "dateFinished": "Aug 17, 2018 10:07:24 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "spark.sql(\"desc formatted rstore.query_hists\").collect().foreach(println)",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Aug 17, 2018 9:27:09 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1534491197541_-1841576125",
+      "id": "20180817-073317_758833427_q_DT1NNXM8E81534490947",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "[id,int,null]\n[qbol_user_id,int,null]\n[submit_time,int,null]\n[end_time,int,null]\n[progress,int,null]\n[cube_id,int,null]\n[updated_at,string,null]\n[created_at,string,null]\n[path,string,null]\n[status,string,null]\n[host_name,string,null]\n[user_loc,boolean,null]\n[qbol_session_id,int,null]\n[command_id,int,null]\n[command_type,string,null]\n[qlog,string,null]\n[periodic_job_id,int,null]\n[wf_id,string,null]\n[command_source,string,null]\n[resolved_macros,string,null]\n[status_code,int,null]\n[pid,int,null]\n[command_template_id,int,null]\n[command_template_mutable_id,int,null]\n[editable_pj_id,int,null]\n[template,string,null]\n[can_notify,boolean,null]\n[num_result_dir,int,null]\n[start_time,int,null]\n[pool,string,null]\n[timeout,int,null]\n[tag,string,null]\n[name,string,null]\n[saved_query_mutable_id,int,null]\n[account_id,int,null]\n[dt,string,null]\n[# Partition Information,,]\n[# col_name,data_type,comment]\n[dt,string,null]\n[,,]\n[# Detailed Table Information,,]\n[Database,rstore,]\n[Table,query_hists,]\n[Owner,ec2-user,]\n[Created,Mon Jul 03 05:39:40 UTC 2017,]\n[Last Access,Thu Jan 01 00:00:00 UTC 1970,]\n[Type,MANAGED,]\n[Provider,hive,]\n[Table Properties,[transient_lastDdlTime\u003d1499060380],]\n[Location,s3n://qubole-mojave-standard/production/warehouse/rstore.db/query_hists,]\n[Serde Library,org.apache.hadoop.hive.ql.io.orc.OrcSerde,]\n[InputFormat,org.apache.hadoop.hive.ql.io.orc.OrcInputFormat,]\n[OutputFormat,org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat,]\n[Storage Properties,[serialization.format\u003d1],]\n[Partition Provider,Catalog,]\n"
+      },
+      "dateCreated": "Aug 17, 2018 7:33:17 AM",
+      "dateSubmitted": "Aug 17, 2018 9:27:09 AM",
+      "dateStarted": "Aug 17, 2018 9:27:20 AM",
+      "dateFinished": "Aug 17, 2018 9:27:21 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sql select * from rstore.cluster_insts limit 1",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Aug 17, 2018 9:41:15 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "id",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.153.254.114%3A8088%2Fproxy%2Fapplication_1534489611333_0001/jobs/job?spark\u003dtrue\u0026id\u003d109"
+          ],
+          "interpreterSettingId": "2DKWSJ2ZW600841530595596362"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1534491839287_-654292449",
+      "id": "20180817-074359_25809288_q_DT1NNXM8E81534490947",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "{\"exceeded\":-1,\"data\":[[\"id\",\"cluster_id\",\"cluster_config_id\",\"cluster_state\",\"start_at\",\"down_at\",\"terminate_reason\",\"last_health_check_action_at\",\"last_health_check_action\",\"created_at\",\"updated_at\",\"start_cluster_manage_command_id\",\"public_ssh_key\",\"private_ssh_key\",\"starting_process_host\",\"starting_process_updated_at\"],[\"1\",\"1\",\"1\",\"DOWN\",\"2012-11-18 05:53:36.0\",\"2012-11-18 06:46:40.0\",\"null\",\"null\",\"null\",\"2014-01-28 16:04:28.0\",\"2014-01-28 16:04:28.0\",\"null\",\"null\",\"null\",\"null\",\"null\"]]}"
+      },
+      "dateCreated": "Aug 17, 2018 7:43:59 AM",
+      "dateSubmitted": "Aug 17, 2018 9:41:15 AM",
+      "dateStarted": "Aug 17, 2018 9:41:16 AM",
+      "dateFinished": "Aug 17, 2018 9:41:16 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sql\n\nselect  \nmin(ci.created_at),\nqh.id as query_hist_id,\na.id as account_id,  \nct.cluster_id, \nqh.created_at,\nci.id as cluster_inst_id,\nci.created_at as cluster_start_time,\nci.down_at as cluster_down_time,\n(qh.end_time - qh.start_time) as duration\n\nfrom\n\n\nrstore.query_hists qh\njoin rstore.spark_commands sc on qh.command_id \u003d sc.id and qh.command_type \u003d\u0027SparkCommand\u0027 \njoin rstore.cluster_tags ct on ct.account_id \u003d qh.account_id and ct.tag \u003d qh.tag\njoin rstore.accounts a on a.id \u003d qh.account_id\njoin rstore.cluster_insts ci on ci.cluster_id \u003d ct.cluster_id\n\n\nwhere\n\nqh.dt \u003e \u00272018-08-01\u0027 and\nsc.dt \u003e \u00272018-08-01\u0027 and \n--ci.created_at \u003c qh.created_at and\nci.down_at \u003e qh.created_at and\nci.created_at \u003e \u00272018-08-01\u0027 and \nqh.status \u003d \u0027done\u0027 and\nqh.id \u003d 171836475 \n\n\ngroup by qh.id\n\norder by duration\ndesc\n--limit 10",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Aug 17, 2018 10:06:59 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1534494819857_821923669",
+      "id": "20180817-083339_39823117_q_DT1NNXM8E81534490947",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "expression \u0027a.`id`\u0027 is neither present in the group by, nor is it an aggregate function. Add to group by or wrap in first() (or first_value) if you don\u0027t care which value you get.;;\nSort [duration#8347 DESC NULLS LAST], true\n+- Aggregate [id#8348], [min(created_at#8440) AS min(created_at)#8448, id#8348 AS query_hist_id#8342, id#8407 AS account_id#8343, cluster_id#8400, created_at#8355, id#8431 AS cluster_inst_id#8344, created_at#8440 AS cluster_start_time#8345, down_at#8436 AS cluster_down_time#8346, (end_time#8351 - start_time#8376) AS duration#8347]\n   +- Filter ((((dt#8383 \u003e 2018-08-01) \u0026\u0026 (dt#8397 \u003e 2018-08-01)) \u0026\u0026 (down_at#8436 \u003e created_at#8355)) \u0026\u0026 (((created_at#8440 \u003e 2018-08-01) \u0026\u0026 (status#8357 \u003d done)) \u0026\u0026 (id#8348 \u003d 171836475)))\n      +- Join Inner, (cluster_id#8432 \u003d cluster_id#8400)\n         :- Join Inner, (id#8407 \u003d account_id#8382)\n         :  :- Join Inner, ((account_id#8399 \u003d account_id#8382) \u0026\u0026 (tag#8401 \u003d tag#8379))\n         :  :  :- Join Inner, ((command_id#8361 \u003d id#8384) \u0026\u0026 (command_type#8362 \u003d SparkCommand))\n         :  :  :  :- SubqueryAlias qh\n         :  :  :  :  +- SubqueryAlias query_hists\n         :  :  :  :     +- CatalogRelation `rstore`.`query_hists`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, [id#8348, qbol_user_id#8349, submit_time#8350, end_time#8351, progress#8352, cube_id#8353, updated_at#8354, created_at#8355, path#8356, status#8357, host_name#8358, user_loc#8359, qbol_session_id#8360, command_id#8361, command_type#8362, qlog#8363, periodic_job_id#8364, wf_id#8365, command_source#8366, resolved_macros#8367, status_code#8368, pid#8369, command_template_id#8370, command_template_mutable_id#8371, ... 11 more fields], [dt#8383]\n         :  :  :  +- SubqueryAlias sc\n         :  :  :     +- SubqueryAlias spark_commands\n         :  :  :        +- CatalogRelation `rstore`.`spark_commands`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, [id#8384, cmdline#8385, account_id#8386, updated_at#8387, created_at#8388, program#8389, arguments#8390, language#8391, user_program_arguments#8392, sql#8393, app_id#8394, paragraph_id#8395, md_cmd#8396], [dt#8397]\n         :  :  +- SubqueryAlias ct\n         :  :     +- SubqueryAlias cluster_tags\n         :  :        +- CatalogRelation `rstore`.`cluster_tags`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8398, account_id#8399, cluster_id#8400, tag#8401, enabled_at#8402, disabled_at#8403, disabled#8404, created_at#8405, updated_at#8406]\n         :  +- SubqueryAlias a\n         :     +- SubqueryAlias accounts\n         :        +- CatalogRelation `rstore`.`accounts`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8407, name#8408, info#8409, created_at#8410, updated_at#8411, storage_type#8412, state#8413, hadoop_max_nodes#8414, hadoop_slave_type#8415, hadoop_initial_nodes#8416, compute_type#8417, hadoop_slave_request_type#8418, timeout_for_spot_request#8419, maximum_bid_price_percentage#8420, maximum_spot_instance_percentage#8421, aws_availability_zone#8422, aws_region#8423, encrypted_ephemerals#8424, hadoop_master_type#8425, custom_hadoop_config#8426, disabled#8427, fair_scheduler_config#8428, account_plan_id#8429, deleted_at#8430]\n         +- SubqueryAlias ci\n            +- SubqueryAlias cluster_insts\n               +- CatalogRelation `rstore`.`cluster_insts`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8431, cluster_id#8432, cluster_config_id#8433, cluster_state#8434, start_at#8435, down_at#8436, terminate_reason#8437, last_health_check_action_at#8438, last_health_check_action#8439, created_at#8440, updated_at#8441, start_cluster_manage_command_id#8442, public_ssh_key#8443, private_ssh_key#8444, starting_process_host#8445, starting_process_updated_at#8446]\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+      },
+      "dateCreated": "Aug 17, 2018 8:33:39 AM",
+      "dateSubmitted": "Aug 17, 2018 10:06:59 AM",
+      "dateStarted": "Aug 17, 2018 10:06:59 AM",
+      "dateFinished": "Aug 17, 2018 10:07:01 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sql \nselect max(cc.id), c.id , cc.use_spark from rstore.clusters c, rstore.cluster_configs cc where cc.id \u003d c.config_id group by c.id limit 1",
+      "user": "beria@qubole.com",
+      "dateUpdated": "Aug 17, 2018 10:21:16 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1534500382735_-717122314",
+      "id": "20180817-100622_1326142357_q_DT1NNXM8E81534490947",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "expression \u0027cc.`use_spark`\u0027 is neither present in the group by, nor is it an aggregate function. Add to group by or wrap in first() (or first_value) if you don\u0027t care which value you get.;;\nGlobalLimit 1\n+- LocalLimit 1\n   +- Aggregate [id#8632], [max(id#8642) AS max(id)#8698, id#8632, use_spark#8677]\n      +- Filter (id#8642 \u003d config_id#8639)\n         +- Join Inner\n            :- SubqueryAlias c\n            :  +- SubqueryAlias clusters\n            :     +- CatalogRelation `rstore`.`clusters`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8632, account_id#8633, created_at#8634, updated_at#8635, deleted_at#8636, version#8637, authentication_token#8638, config_id#8639, config_type#8640, qbol_user_id#8641]\n            +- SubqueryAlias cc\n               +- SubqueryAlias cluster_configs\n                  +- CatalogRelation `rstore`.`cluster_configs`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, [id#8642, cluster_id#8643, aws_region#8644, aws_availability_zone#8645, hadoop_master_type#8646, hadoop_slave_type#8647, hadoop_initial_nodes#8648, hadoop_max_nodes#8649, custom_hadoop_config#8650, fair_scheduler_config#8651, default_pool#8652, hadoop_slave_request_type#8653, maximum_bid_price_percentage#8654, timeout_for_spot_request#8655, maximum_spot_instance_percentage#8656, disallow_cluster_termination#8657, created_at#8658, updated_at#8659, is_latest#8660, presto_jvm_mem#8661, presto_task_mem#8662, force_tunnel#8663, node_bootstrap_file#8664, is_presto_enabled#8665, ... 31 more fields]\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+      },
+      "dateCreated": "Aug 17, 2018 10:06:22 AM",
+      "dateSubmitted": "Aug 17, 2018 10:21:16 AM",
+      "dateStarted": "Aug 17, 2018 10:21:16 AM",
+      "dateFinished": "Aug 17, 2018 10:21:16 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1534501199218_1502847070",
+      "id": "20180817-101959_1738337629_q_DT1NNXM8E81534490947",
+      "dateCreated": "Aug 17, 2018 10:19:59 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "long running spark commands",
+  "id": "DT1NNXM8E81534490947",
+  "angularObjects": {
+    "2DGCPDJVT600841527493723422:shared_process": [],
+    "2DDY2M4D4600841527493723381:shared_process": [],
+    "2DH9V14Q3600841527493723386:shared_process": [],
+    "2DKWSJ2ZW600841530595596362:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": ""
+  },
+  "info": {},
+  "source": "FCN"
+}
